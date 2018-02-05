@@ -18,7 +18,7 @@
 		<div class="sidebar" style="width:191px">
 			<ul class="nav nav-sidebar">
             	<li style="padding-right: 50px;padding-left:20px"><a href="#">推荐</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">计算机</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="#">电子科技</a></li>
             	<li style="padding-right: 50px;padding-left:20px"><a href="#">金融</a></li>
             	<li style="padding-right: 50px;padding-left:20px"><a href="#">文学历史</a></li>
             	<li style="padding-right: 50px;padding-left:20px"><a href="#">英语</a></li>
