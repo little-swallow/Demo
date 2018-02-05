@@ -119,3 +119,34 @@
 	padding-right:50px;
 }
 /*self end*/
+/*home start*/
+.showlist{
+	list-style-type:none;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-top: 10px;
+    background-color:white;
+    padding: 0;
+}
+.sourcelist{
+	padding: 20px 24px;
+	border-bottom: 1px solid #f4f4f4;
+}
+.infobar{
+	clear:left;
+	color:#999;
+	margin-bottom: 40px;
+	margin-top:18px
+}
+.infobar dd{
+	float:left;
+	padding-right:15px;
+	
+}
+ul.showlist li:hover{
+	background: #fafafa;
+}
+.details a:hover{
+	text-decoration: none;
+}
+
+/*home end*/

@@ -41,6 +41,14 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/com/demo/controller/UploadServlet</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>SelectmainServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelectmainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectmainServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelectmainServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>testServlet</servlet-name>
     <servlet-class>com.demo.controller.testServlet</servlet-class>
@@ -57,7 +65,7 @@
     <servlet-name>ShowServlet</servlet-name>
     <url-pattern>/com/demo/controller/ShowServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>DownloadServlet</servlet-name>
     <servlet-class>com.demo.controller.DownloadServlet</servlet-class>
   </servlet>

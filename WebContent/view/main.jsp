@@ -15,7 +15,7 @@
 	<frame src="top.jsp" name="top" noresize="noresize"/>
 		<frameset cols="15%,85%" border="1">
 			<frame src="left.jsp" name="left" noresize="noresize"/>
-		 	<frame src="home.jsp" name="right" noresize="noresize"/>
+		 	<frame src="../com/demo/controller/SelectmainServlet" name="right" noresize="noresize"/>
 		</frameset>
 </frameset>
 </html>
