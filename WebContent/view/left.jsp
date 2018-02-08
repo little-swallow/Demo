@@ -17,17 +17,17 @@
 	<div class="container-fluid">
 		<div class="sidebar" style="width:191px">
 			<ul class="nav nav-sidebar">
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">推荐</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">电子科技</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">金融</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">文学历史</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">英语</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">数理化</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">建筑</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">艺术设计</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">日语</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">心理学</a></li>
-            	<li style="padding-right: 50px;padding-left:20px"><a href="#">教育</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectmainServlet" target="right">推荐</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=电子科技" target="right">电子科技</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=金融" target="right">金融</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=文学历史" target="right">文学历史</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=英语" target="right">英语</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=数理化" target="right">数理化</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=建筑" target="right">建筑</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=艺术设计" target="right">艺术设计</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=日语" target="right">日语</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=心理学" target="right">心理学</a></li>
+            	<li style="padding-right: 50px;padding-left:20px"><a href="../com/demo/controller/SelectbysortServlet?sort=教育" target="right">教育</a></li>
         	</ul>
         </div>
 	</div>

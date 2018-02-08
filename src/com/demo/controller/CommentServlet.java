@@ -1,6 +1,9 @@
 package com.demo.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,22 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.demo.bean.UserBean;
-import com.demo.dao.UserDao;
-
-
+import com.demo.bean.CommentBean;
+import com.demo.dao.CommentDao;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CommentServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/CommentServlet")
+public class CommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public CommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,32 +42,30 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
+		String comment = request.getParameter("comment");
 		HttpSession session = request.getSession();
-		String name = request.getParameter("logname");
-		String pwd = request.getParameter("logpass");
-		UserBean user = new UserBean();
-		user.setName(name);
-		user.setPwd(pwd);
-		
-		UserDao userDao = new UserDao();
-		int id = 0 ;
-		String msg = "" ;
+		int uid = (int)session.getAttribute("Userid");
+		int sid = (int)session.getAttribute("Sourceid");
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String commenttime = sdf.format(date);
+		CommentBean commentBean = new CommentBean();
+		commentBean.setScont(comment);
+		commentBean.setSctime(commenttime);
+		CommentDao commentDao = new CommentDao();
+		boolean flag = false;
 		try {
-			id = userDao.login(user);
+			flag = commentDao.commentsource(commentBean, uid, sid);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(id == 0) {
-			msg = "用户名或密码错误";
-			session.setAttribute("Msg", msg);
-			response.sendRedirect("../../../view/login.jsp");	
+		if(flag) {
+			response.sendRedirect("SelectcomServlet");
 		}else {
-			msg = "登录成功";
-			session.setAttribute("Msg", msg);
-			session.setAttribute("Userid",id);
-			response.sendRedirect("../../../view/main.jsp");
+			response.sendRedirect("../../../view/sourcecontent.jsp");
 		}
 	}
+
 }

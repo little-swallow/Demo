@@ -20,15 +20,16 @@
 				<div class="projectname">
 					资源共享平台
 				</div>
-          		<div class="navbar-right row" id="uloginstate" style="display:block">
-            		<a class="col-md-6" href="login.jsp" target="_top" style="color: #9d9d9d;float:left;margin-top:20px">登录</a>
-            		<a class="col-md-6" href="#" style="color: #9d9d9d;float:right;margin-top:20px">帮助</a>
+          		<div class="navbar-right row" id="uloginstate" style="display:block;width: 300px;">
+            		<a class="col-md-9" href="login.jsp" target="_top" style="color: #9d9d9d;text-align:right;margin-top:20px">登录</a>
+            		<a class="col-md-3" href="#" style="color: #9d9d9d;margin-top:20px">帮助</a>
             	</div>
-            	<div class="navbar-right row" id="loginstate" style="display:none">
-            		<a class="col-md-6" href="uploadfile.jsp" target="right" style="color: #9d9d9d;float:left;margin-top:20px">上传资源</a>
-            		<a class="col-md-6" href="selfinfo.jsp" target="right" style="color: #9d9d9d;float:right;margin-top:20px">个人中心</a>
+            	<div class="navbar-right row" id="loginstate" style="display:none;width: 300px;">
+            		<a class="col-md-4" href="../com/demo/controller/MysourceServlet" target="right" style="color: #9d9d9d;float:left;margin-top:20px">我的资源</a>
+            		<a class="col-md-4" href="uploadfile.jsp" target="right" style="color: #9d9d9d;float:left;margin-top:20px">上传资源</a>
+            		<a class="col-md-4" href="../com/demo/controller/SelfinfoServlet" target="right" style="color: #9d9d9d;float:right;margin-top:20px">个人中心</a>
             	</div>
-          		<form class="navbar-form navbar-right" style="margin-right:120px;margin-top:13px;">
+          		<form class="navbar-form navbar-right" style="margin-right:130px;margin-top:13px;">
           			<div class="row">
           				<input type="text" class="form-control col-md-9" placeholder="Search...">
             			<button type="submit" class="btn col-md-2"style="margin-left:10px;background-color:#fff;color:#9d9d9d">Go</button>

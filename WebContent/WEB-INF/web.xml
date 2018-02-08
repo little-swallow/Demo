@@ -10,6 +10,22 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+    <servlet-name>CommentServlet</servlet-name>
+    <servlet-class>com.demo.controller.CommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentServlet</servlet-name>
+    <url-pattern>/com/demo/controller/CommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectcomServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelectcomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectcomServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelectcomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.demo.controller.RegisterServlet</servlet-class>
   </servlet>
@@ -24,6 +40,14 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/com/demo/controller/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelfinfoServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelfinfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelfinfoServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelfinfoServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>UpdateinfoServlet</servlet-name>
@@ -41,7 +65,7 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/com/demo/controller/UploadServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>SelectmainServlet</servlet-name>
     <servlet-class>com.demo.controller.SelectmainServlet</servlet-class>
   </servlet>
@@ -50,20 +74,36 @@
     <url-pattern>/com/demo/controller/SelectmainServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>testServlet</servlet-name>
-    <servlet-class>com.demo.controller.testServlet</servlet-class>
+    <servlet-name>DetailServlet</servlet-name>
+    <servlet-class>com.demo.controller.DetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>testServlet</servlet-name>
-    <url-pattern>/com/demo/controller/testServlet</url-pattern>
+    <servlet-name>DetailServlet</servlet-name>
+    <url-pattern>/com/demo/controller/DetailServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>ShowServlet</servlet-name>
-    <servlet-class>com.demo.controller.ShowServlet</servlet-class>
+    <servlet-name>SelectbysortServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelectbysortServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowServlet</servlet-name>
-    <url-pattern>/com/demo/controller/ShowServlet</url-pattern>
+    <servlet-name>SelectbysortServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelectbysortServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MysourceServlet</servlet-name>
+    <servlet-class>com.demo.controller.MysourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MysourceServlet</servlet-name>
+    <url-pattern>/com/demo/controller/MysourceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>com.demo.controller.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/com/demo/controller/DeleteServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>DownloadServlet</servlet-name>

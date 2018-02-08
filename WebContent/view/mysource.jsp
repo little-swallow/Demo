@@ -16,21 +16,26 @@
 </head>
 <body style="background-color:#f4f4f4">
 	<div class="container-fluid">
-	 	<ul class="showlist" id="showlist"> 
+	 	<ul class="showlist"> 
 	 	 	<c:forEach items="${info}" var="item"> 
-        	  	<c:url value="../com/demo/controller/DetailServlet" var="url">  
-            		<c:param name="fileid" value="${item.sid}"></c:param>  
+        	  	<c:url value="../com/demo/controller/DeleteServlet" var="url">  
+            		<c:param name="oldname" value="${item.suname}"></c:param>  
         		</c:url>  
 			 	<li class="sourcelist">
-					<div class="details">
-						<h4 style="font-weight:bold"><a href="${url}" style="color:black">${item.describe}</a></h4>
-						<dl class="infobar">
-							<dd>上传者：${item.upname}</dd>
-							<dd>${item.sourcesort}</dd>
-							<dd>${item.sdate}</dd>
-							<dd>浏览量：${item.viewcount}</dd>
-							<dd>下载量：${item.dlcount}</dd>
-						</dl>
+			 		<div class="row">
+						<div class="col-md-9 details">
+							<h4 style="font-weight:bold">${item.describe}</h4>
+							<dl class="infobar">
+								<dd>上传者：${item.upname}</dd>
+								<dd>${item.sourcesort}</dd>
+								<dd>${item.sdate}</dd>
+								<dd>浏览量：${item.viewcount}</dd>
+								<dd>下载量：${item.dlcount}</dd>
+							</dl>
+						</div>
+						<div class="col-md-3" style="margin-top: 20px;"> 
+							<button type="button" class="btn btn-primary" style="float:right"><a href="${url}" style="color:white">删除</a></button>
+						</div>
 					</div>
 				</li>
 			</c:forEach> 

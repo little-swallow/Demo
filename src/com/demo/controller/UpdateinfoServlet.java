@@ -68,9 +68,9 @@ public class UpdateinfoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(flag) {
-			System.out.println("yes");
+			response.sendRedirect("SelectmainServlet");	
 		}else {
-			System.out.println("no");
+			response.sendRedirect("../../../view/selfinfo.jsp");	
 		}
 		
 		

@@ -14,16 +14,16 @@ import com.demo.bean.SourceBean;
 import com.demo.dao.SourceDao;
 
 /**
- * Servlet implementation class SelectmainServlet
+ * Servlet implementation class SelectbysortServlet
  */
-@WebServlet("/SelectmainServlet")
-public class SelectmainServlet extends HttpServlet {
+@WebServlet("/SelectbysortServlet")
+public class SelectbysortServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectmainServlet() {
+    public SelectbysortServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,20 @@ public class SelectmainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		request.setCharacterEncoding("utf-8");
+		String sort = request.getParameter("sort");
+		sort = new String(sort.getBytes("ISO-8859-1"),"UTF-8");
+		HttpSession session = request.getSession();
+		SourceDao sourceDao = new SourceDao();
+		ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
+		try {
+			sourceinfo = sourceDao.selectbysort(sort);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("info", sourceinfo); 
+		response.sendRedirect("../../../view/home.jsp"); 
 	}
 
 	/**
@@ -41,19 +54,7 @@ public class SelectmainServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		SourceDao sourceDao = new SourceDao();
-		ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
-		try {
-			sourceinfo = sourceDao.selectsource();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		session.setAttribute("info", sourceinfo); 
-		response.sendRedirect("../../../view/home.jsp"); 
-	//	request.getRequestDispatcher("/view/home.jsp").forward(request, response);  
+		doGet(request, response);
 	}
 
 }

@@ -10,6 +10,13 @@ public class SourceBean {
 	private int viewcount;
 	private int dlcount;
 	private String sdate;
+	private String upname;
+	public String getUpname() {
+		return upname;
+	}
+	public void setUpname(String upname) {
+		this.upname = upname;
+	}
 	public String getSdate() {
 		return sdate;
 	}

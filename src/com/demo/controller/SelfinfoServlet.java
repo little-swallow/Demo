@@ -8,22 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.demo.bean.SourceBean;
 import com.demo.bean.UserBean;
+import com.demo.dao.SourceDao;
 import com.demo.dao.UserDao;
 
-
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SelfinfoServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/SelfinfoServlet")
+public class SelfinfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SelfinfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,19 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		int id =  (int)session.getAttribute("Userid");
+		UserDao userDao = new UserDao();
+		UserBean user =new UserBean();
+		try {
+			user = userDao.selectuserinfo(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.sendRedirect("../../../view/selfinfo.jsp");	
+		session.setAttribute("Userinfo", user);		
 	}
 
 	/**
@@ -41,32 +53,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		String name = request.getParameter("logname");
-		String pwd = request.getParameter("logpass");
-		UserBean user = new UserBean();
-		user.setName(name);
-		user.setPwd(pwd);
-		
-		UserDao userDao = new UserDao();
-		int id = 0 ;
-		String msg = "" ;
-		try {
-			id = userDao.login(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(id == 0) {
-			msg = "用户名或密码错误";
-			session.setAttribute("Msg", msg);
-			response.sendRedirect("../../../view/login.jsp");	
-		}else {
-			msg = "登录成功";
-			session.setAttribute("Msg", msg);
-			session.setAttribute("Userid",id);
-			response.sendRedirect("../../../view/main.jsp");
-		}
+		doGet(request, response);
 	}
+
 }

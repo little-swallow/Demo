@@ -1,36 +1,26 @@
 package com.demo.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.demo.bean.SourceBean;
 import com.demo.dao.SourceDao;
 
-import jdk.nashorn.internal.ir.Flags;
-
-
-
 /**
- * Servlet implementation class DownloadServlet
+ * Servlet implementation class DeleteServlet
  */
-@WebServlet("/DownloadServlet")
-public class DownloadServlet extends HttpServlet {
+@WebServlet("/DeleteServlet")
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DownloadServlet() {
+    public DeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,41 +31,36 @@ public class DownloadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String filename = request.getParameter("oldname");
+		System.out.println(filename);
 		filename = new String(filename.getBytes("ISO-8859-1"),"UTF-8");
+        System.out.println(filename);   
         String storeDirectory = getServletContext().getRealPath("/WEB-INF/files");  
         //得到存放的子目录  
-        String childDirecotry = makeChildDirectory(storeDirectory, filename);  
-          
-        //构建输入流  
-        InputStream in = new FileInputStream(storeDirectory+File.separator+childDirecotry+File.separator+filename);  
-        //下载  
-        String oldfilename = filename.substring(filename.indexOf("_")+1);  
-        //通知客户端以下载的方式打开  
-        response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(oldfilename, "UTF-8"));       
-        OutputStream out = response.getOutputStream();  
-          
-        int len = -1;  
-        byte b[] = new byte[1024];  
-        while((len=in.read(b))!=-1){  
-            out.write(b,0,len);  
-        }  
-        in.close();  
-        out.close();
-        
-        SourceDao sourceDao = new SourceDao();
-		boolean flag = false;
-		try {
-			flag = sourceDao.updatedown(filename);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(flag) {
-			System.out.println("download+1");
-		}else {
-			System.out.println("update download fail");
-		}
-	 }
+        String childDirecotry = makeChildDirectory(storeDirectory, filename); 
+        String storeDirectoryPath = storeDirectory+File.separator+childDirecotry+File.separator+filename;
+        File deletefile = new File(storeDirectoryPath); 
+        boolean flag = false;
+        if(deletefile.exists()) {
+        	flag = deletefile.delete();
+        	if(flag) {
+        		SourceDao sourceDao = new SourceDao();
+        		boolean tag = false;
+        		try {
+					tag = sourceDao.deletefile(filename);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		if(tag) {
+            		System.out.println("成功");
+        		}else {
+            		System.out.println("数据库操作失败");
+        		}
+        	}else {
+        		System.out.println("失败");
+        	}
+        }
+	}
 	 private String makeChildDirectory(String realPath, String fileName) {  
 	        int hashCode = fileName.hashCode();  
 	        int dir1 = hashCode&0xf;// 取1~4位  
@@ -87,6 +72,7 @@ public class DownloadServlet extends HttpServlet {
 	        System.out.println(directory);
 	        return directory;  
 	 }
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -94,5 +80,5 @@ public class DownloadServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
+
 }

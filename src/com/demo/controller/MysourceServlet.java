@@ -14,16 +14,16 @@ import com.demo.bean.SourceBean;
 import com.demo.dao.SourceDao;
 
 /**
- * Servlet implementation class SelectmainServlet
+ * Servlet implementation class MysourceServlet
  */
-@WebServlet("/SelectmainServlet")
-public class SelectmainServlet extends HttpServlet {
+@WebServlet("/MysourceServlet")
+public class MysourceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectmainServlet() {
+    public MysourceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,19 @@ public class SelectmainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		int id =  (int)session.getAttribute("Userid");
+		SourceDao sourceDao = new SourceDao();
+		ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
+		try {
+			sourceinfo = sourceDao.selectbyuid(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("info", sourceinfo); 
+		response.sendRedirect("../../../view/mysource.jsp"); 
 	}
 
 	/**
@@ -41,19 +53,7 @@ public class SelectmainServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		SourceDao sourceDao = new SourceDao();
-		ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
-		try {
-			sourceinfo = sourceDao.selectsource();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		session.setAttribute("info", sourceinfo); 
-		response.sendRedirect("../../../view/home.jsp"); 
-	//	request.getRequestDispatcher("/view/home.jsp").forward(request, response);  
+		doGet(request, response);
 	}
 
 }

@@ -25,8 +25,22 @@ public class UserDao {
 		return false;
 	}
 	
-	public boolean login(UserBean userBean) throws Exception{
+//	public boolean login(UserBean userBean) throws Exception{
+//		Connection connection = dBconnection.getConn();
+//		String sql = "select * from user_table where Uname=? and Upass=?";
+//		ResultSet rs = null;
+//		PreparedStatement prest = dBconnection.getprep(connection, sql);
+//		prest.setString(1, userBean.getName());
+//		prest.setString(2, userBean.getPwd());
+//		rs = prest.executeQuery();
+//		while(rs.next()){
+//			return true;
+//		}
+//		return false;
+//	}
+	public int login(UserBean userBean) throws Exception{
 		Connection connection = dBconnection.getConn();
+		UserBean user = new  UserBean();
 		String sql = "select * from user_table where Uname=? and Upass=?";
 		ResultSet rs = null;
 		PreparedStatement prest = dBconnection.getprep(connection, sql);
@@ -34,19 +48,18 @@ public class UserDao {
 		prest.setString(2, userBean.getPwd());
 		rs = prest.executeQuery();
 		while(rs.next()){
-			return true;
+			user.setCid(rs.getInt("Uid"));
 		}
-		return false;
+		return user.getCid();
 	}
 	
-	public UserBean selectuserinfo(UserBean userBean) throws Exception{
+	public UserBean selectuserinfo(int id) throws Exception{
 		UserBean user = new  UserBean();
 		Connection connection = dBconnection.getConn();
-		String sql = "select * from user_table where Uname=? and Upass=?";
+		String sql = "select * from user_table where Uid=?";
 		ResultSet rs = null;
 		PreparedStatement prest = dBconnection.getprep(connection, sql);
-		prest.setString(1, userBean.getName());
-		prest.setString(2, userBean.getPwd());
+		prest.setInt(1, id);
 		rs = prest.executeQuery();
 		while(rs.next()){
 			user.setCid(rs.getInt("Uid"));

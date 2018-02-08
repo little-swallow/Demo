@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>首页</title>
 <link type="text/css" href="../css-import/bootstrap.min.css" rel="stylesheet">
 <link type="text/css" href="../css-custom/theme.css" rel="stylesheet">
 <link type="text/css" href="../css-custom/dashboard.css" rel="stylesheet">

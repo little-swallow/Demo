@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>上传资源</title>
 <link type="text/css" href="../css-import/bootstrap.min.css" rel="stylesheet">
 <link type="text/css" href="../css-import/bootstrap.css" rel="stylesheet">
 <link type="text/css" href="../css-custom/theme.css" rel="stylesheet">

@@ -150,3 +150,26 @@ ul.showlist li:hover{
 }
 
 /*home end*/
+/*sourcecontent start*/
+.infodetail{
+	margin-left:45px;
+	font-size:14px;
+	margin-top:10px;
+	margin-bottom:40px
+}
+.commentpart{
+	margin-top:40px;
+}
+.ctitle{
+	color: black;
+    background-color: lightgray;
+    margin-top: 0px;
+    text-align: center;
+    padding: 5px;
+}
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin-top:10px;
+}
+/*sourcecontent end*/

@@ -117,11 +117,6 @@ public class UploadServlet extends HttpServlet {
     				case "inabstract" : sourceBean.setIntro(entry.getValue());break;
     			}
             }
-//            System.out.println(sourceBean.getSname());
-//            System.out.println(sourceBean.getSuname());
-//            System.out.println(sourceBean.getDescribe());
-//            System.out.println(sourceBean.getSourcesort());
-//            System.out.println(sourceBean.getIntro());
             SourceDao sourceDao = new SourceDao();
             boolean flag = false;
             try {
@@ -131,24 +126,37 @@ public class UploadServlet extends HttpServlet {
 				e.printStackTrace();
 			}
             if(flag) {
-            	out.write("上传成功！");
+//            	out.write("上传成功！");
+            	response.sendRedirect("../../../view/main.jsp");
             }else {
             	out.write("上传数据库失败！");
 			}  
         }else {
-        	out.write("上传失败！");
+//        	out.write("上传失败！");
+        	response.sendRedirect("../../../view/uploadfile.jsp");
         }
     }  
     private boolean processUploadField(FileItem item) {  
         try {  
-            String fileName = item.getName(); 
+            String allfilename = item.getName(); 
+            String fileName = null;
+            int ind = allfilename.lastIndexOf("\\");
+            if(ind != -1) {
+            	fileName = allfilename.substring(ind+1);
+            }else {
+            	fileName = allfilename;
+            }
+            fileName=fileName.replaceAll(" ", "");
+            fileName=fileName.replaceAll("）", ")");
+            fileName=fileName.replaceAll("（", "(");
+            System.out.println(fileName);
             boolean flag = false;   
             //用户选择上传文件时  
             if(fileName!=null&&!fileName.equals("")){  
 //            	SourceBean sBean = new SourceBean();
             	sourceBean.setSname(fileName);
             	//通用唯一识别码
-                fileName = UUID.randomUUID().toString()+"_"+FilenameUtils.getName(fileName);  
+                fileName = UUID.randomUUID().toString()+"_"+FilenameUtils.getName(fileName); 
                 sourceBean.setSuname(fileName);
                 //得到扩展名  
                 String extension = FilenameUtils.getExtension(fileName);  
@@ -162,7 +170,6 @@ public class UploadServlet extends HttpServlet {
                 if(!storeDirectory.exists()){  
                     storeDirectory.mkdirs();  
                 }  
-//                System.out.println(fileName);  
                 flag = true;
                 // write方法用于将FileItem对象中保存的主体内容保存到某个指定的文件中。
                 //如果FileItem对象中的主体内容是保存在某个临时文件中，该方法顺利完成后，临时文件有可能会被清除。
@@ -177,13 +184,13 @@ public class UploadServlet extends HttpServlet {
     }  
     //计算存放的子目录  
     private String makeChildDirectory(String realPath, String fileName) {  
-        int hashCode = fileName.hashCode();  
+        int hashCode = fileName.hashCode();
         int dir1 = hashCode&0xf;// 取1~4位  
         int dir2 = (hashCode&0xf0)>>4;//取5~8位  
         String directory = ""+dir1+File.separator+dir2;  
         File file = new File(realPath,directory);  
         if(!file.exists())  
-            file.mkdirs();     
+            file.mkdirs();  
         return directory;  
     }  
     private Map<String, String> processFormField(FileItem item) { 
