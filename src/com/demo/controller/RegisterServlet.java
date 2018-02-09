@@ -65,11 +65,11 @@ public class RegisterServlet extends HttpServlet {
 		if(flag) {
 			msg="×¢²á³É¹¦";
 			session.setAttribute("Msg", msg);
-			response.sendRedirect("../../../view/login.jsp");
+			response.sendRedirect("../../../view/login.jsp?success=yes");
 		}else {
 			msg="×¢²áÊ§°Ü";
 			session.setAttribute("Msg", msg);
-			response.sendRedirect("../../../view/login.jsp");
+			response.sendRedirect("../../../view/register.jsp?success=no");
 		}
 		
 		

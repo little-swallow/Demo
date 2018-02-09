@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 		if(id == 0) {
 			msg = "用户名或密码错误";
 			session.setAttribute("Msg", msg);
-			response.sendRedirect("../../../view/login.jsp");	
+			response.sendRedirect("../../../view/login.jsp?error=yes");	
 		}else {
 			msg = "登录成功";
 			session.setAttribute("Msg", msg);

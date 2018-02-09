@@ -20,16 +20,13 @@
 
 </head>
 <body>
-	<% String message = (String)session.getAttribute("Msg");
-		if("".equals(message) || message==null){  }
-		else{ %>
-		<script type="text/javascript">
-			alert("<%=message%>");			
-		</script>	
-		<% 	session.setAttribute("Msg","");
-		} %>
 	<div class="loginbox" id="loginbox" style="display:block">
-	<!-- 	<div class="alert alert-danger" id="tool" style="display:none">错误！请进行一些更改。</div>  -->
+		<div class="alert" id = "tool" style="display:none">
+			<a href="#" class="close" data-dismiss="alert">
+			&times;
+			</a>
+			<strong id="tooltip"></strong>
+		</div>
 		<h3>欢迎登录</h3>
 		<form action="../com/demo/controller/LoginServlet" method="post" >
 			<div class="input_div">
@@ -47,47 +44,25 @@
 			<a href="#" class="login-fgetpwd" style="color: #FFFFFF;float: right;">忘记密码？</a>	    
 		</form>
 		<div class="resdiv">
-			<a href="#" id="showres">还没注册！点击注册</a>
-		</div>
-	</div>
-	<div class="loginbox" id="registerbox" style="display:none">
-		<h3>欢迎注册</h3>
-		<form action="../com/demo/controller/RegisterServlet" method="post" >
-			<label>用户名：</label>
-			<div class="input_div">
-				<input name="rname" id="rname" class="text" style="color: #FFFFFF !important" type="text">
-			</div>
-			<label>密码：</label>
-			<div class="input_div">
-				<input name="rpwd" id="rpwd" class="text" style="color: #FFFFFF !important" type="password">
-			</div>
-			<label>邮箱地址：</label>
-			<div class="input_div">
-				<input name="remail" id="remail" class="text" style="color: #FFFFFF !important" type="text">
-			</div>
-			<label>联系方式：</label>
-			<div class="input_div">
-				<input name="rphone" id="rphone" class="text" style="color: #FFFFFF !important" type="text">
-			</div>
-			<div style="margin-bottom: 20px">
-				<input type="submit" value="注册" class="act-but submit"style="color: #FFFFFF;text-decoration: none;outline: none;"/>
-			</div> 
-		</form>
-		<div class="resdiv" style="margin-top:10px">
-			<a href="#" id="showlog">已有账号！点击登录</a>
+			<a href="register.jsp" id="showres">还没注册！点击注册</a>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
 	$(function(){
-		$('#showres').click(function(){
-			$("#loginbox").css('display','none'); 
-			$('#registerbox').css('display','block');
-		})
-		$('#showlog').click(function(){
-			$("#registerbox").css('display','none'); 
-			$('#loginbox').css('display','block');
-		})
+		var msg ='<%=request.getParameter("error")%>';
+		if(msg == 'yes'){
+			$("#tooltip").text("用户名或密码错误!");
+			$("#tool").addClass("alert-danger");
+			$("#tool").css('display','block');
+			msg = "no";
+		}
+		var msg ='<%=request.getParameter("success")%>';
+	    if(msg=="yes"){
+			$("#tooltip").text("注册成功！请登录");
+			$("#tool").addClass("alert-success");
+			$("#tool").css('display','block');
+		}
 	})
 </script>
 </html>
