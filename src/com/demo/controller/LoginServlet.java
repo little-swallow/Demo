@@ -51,7 +51,6 @@ public class LoginServlet extends HttpServlet {
 		
 		UserDao userDao = new UserDao();
 		int id = 0 ;
-		String msg = "" ;
 		try {
 			id = userDao.login(user);
 		} catch (Exception e) {
@@ -59,13 +58,11 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(id == 0) {
-			msg = "用户名或密码错误";
-			session.setAttribute("Msg", msg);
 			response.sendRedirect("../../../view/login.jsp?error=yes");	
 		}else {
-			msg = "登录成功";
-			session.setAttribute("Msg", msg);
 			session.setAttribute("Userid",id);
+			String id1 = Integer.toString(id);
+			session.setAttribute("Suserid", id1);
 			response.sendRedirect("../../../view/main.jsp");
 		}
 	}

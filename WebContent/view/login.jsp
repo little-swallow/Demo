@@ -55,7 +55,6 @@
 			$("#tooltip").text("用户名或密码错误!");
 			$("#tool").addClass("alert-danger");
 			$("#tool").css('display','block');
-			msg = "no";
 		}
 		var msg ='<%=request.getParameter("success")%>';
 	    if(msg=="yes"){

@@ -1,13 +1,11 @@
 package com.demo.controller;
 
-import java.io.Console;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.demo.bean.UserBean;
 import com.demo.dao.UserDao;
@@ -41,7 +39,6 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		String name = request.getParameter("rname");
 		String pwd = request.getParameter("rpwd");
 		String email = request.getParameter("remail");
@@ -54,7 +51,6 @@ public class RegisterServlet extends HttpServlet {
 		user.setPhone(phone);
 		
 		boolean flag = false;
-		String msg = "";
 		UserDao userDao = new UserDao();
 		try {
 			flag = userDao.registe(user);
@@ -63,12 +59,8 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(flag) {
-			msg="×¢²á³É¹¦";
-			session.setAttribute("Msg", msg);
 			response.sendRedirect("../../../view/login.jsp?success=yes");
 		}else {
-			msg="×¢²áÊ§°Ü";
-			session.setAttribute("Msg", msg);
 			response.sendRedirect("../../../view/register.jsp?success=no");
 		}
 		

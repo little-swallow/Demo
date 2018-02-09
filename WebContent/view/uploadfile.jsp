@@ -13,6 +13,12 @@
 <script type="text/javascript" src="../js-import/bootstrap.js"></script>
 </head>
 <body>
+<div class="alert" id = "filetool" style="display:none;width:200px;margin-left: 450px;">
+	<a href="#" class="close" data-dismiss="alert">
+	&times;
+	</a>
+	<strong id="filetip"></strong>
+</div>
 <div class="container selfdiv" style="width: 700px;">
 		<div class="headpart">
 			<h4 style="text-align:center;margin-top:10px">资源上传</h4>
@@ -53,4 +59,18 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	$(function(){
+		var msg ='<%=request.getParameter("fileup")%>';
+		if(msg == 'no'){
+			$("#filetip").text("上传文件失败");
+			$("#filetool").addClass("alert-danger")
+			$("#filetool").css('display','block');
+		}else if(msg == 'yes'){
+			$("#filetip").text("上传文件成功");
+			$("#filetool").addClass("alert-success");
+			$("#filetool").css('display','block');
+		}
+	})
+</script>
 </html>

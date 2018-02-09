@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import com.demo.bean.UserBean;
 import com.demo.dao.UserDao;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 /**
  * Servlet implementation class UpdateinfoServlet

@@ -21,11 +21,11 @@
 </head>
 <body>
 	<div class="loginbox" id="registerbox">
-		<div class="alert" id = "tool" style="display:none">
+		<div class="alert" id = "tool1" style="display:none">
 			<a href="#" class="close" data-dismiss="alert">
 			&times;
 			</a>
-			<strong id="tooltip"></strong>
+			<strong id="tooltip1"></strong>
 		</div>
 		<h3>欢迎注册</h3>
 		<form action="../com/demo/controller/RegisterServlet" method="post" >
@@ -58,9 +58,9 @@
 	$(function(){
 		var msg ='<%=request.getParameter("success")%>';
 		if(msg == 'no'){
-			$("#tooltip").text("注册失败! 请重新注册");
-			$("#tool").addClass("alert-danger");
-			$("#tool").css('display','block');
+			$("#tooltip1").text("注册失败! 请重新注册");
+			$("#tool1").addClass("alert-danger");
+			$("#tool1").css('display','block');
 		}
 	})
 </script>

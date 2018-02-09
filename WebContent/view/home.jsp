@@ -36,5 +36,27 @@
 			</c:forEach> 
 	  	</ul>
 	</div>
+	<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   		<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header" >
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               	 	<h4 class="modal-title" id="myModalLabel">提示：</h4>
+            	</div>
+            	<div class="modal-body" style="border:none;text-align:center">
+            		<div style="font-size: 16px;margin-bottom: 30px;">请先登录</div>
+            		<div><a href="login.jsp" target="_top">点击此处登录</a></div>
+            	</div>
+        	</div>
+    	</div>
+	</div>
 </body>
+<script type="text/javascript">
+	$(function(){
+		var msg ='<%=request.getParameter("login")%>';
+		if(msg == 'no'){
+			$('#logModal').modal('show');
+		}
+	})
+</script>
 </html>

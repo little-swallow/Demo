@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.demo.bean.SourceBean;
 import com.demo.dao.SourceDao;
-import com.sun.glass.ui.Application;
-import com.sun.javafx.collections.SortableList;
 
 /**
  * Servlet implementation class DetailServlet
@@ -35,33 +32,40 @@ public class DetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String fileid = request.getParameter("fileid");
-		int sid = Integer.parseInt(fileid);
-//		ServletContext servletContext = getServletConfig().getServletContext();
-		int count = 0;
-		SourceBean sourceBean = new SourceBean();
-		SourceDao sourceDao = new SourceDao();
-		try {
-			sourceBean = sourceDao.singleinfo(sid);
-			count = sourceBean.getViewcount()+1;
-			boolean flag = false;
-			flag = sourceDao.updateview(sid, count);
-			if(flag) {
-				System.out.println(count);
-//				servletContext.setAttribute("viewcount", count);
-				sourceBean.setViewcount(count);
-			}else {
-				System.out.println("wrong");
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		HttpSession session = request.getSession();
-		session.setAttribute("Singleinfo", sourceBean);
-		session.setAttribute("Sourceid", sid);
-//		System.out.println(sourceBean.getSid());
-		response.sendRedirect("SelectcomServlet");
+		String cid = (String)session.getAttribute("Suserid");
+		if(cid == null) { 
+			System.out.println("Ã»µÇÂ¼");
+			response.sendRedirect("../../../view/home.jsp?login=no");
+		}else {
+			System.out.println(cid);
+			String fileid = request.getParameter("fileid");
+			int sid = Integer.parseInt(fileid);
+//			ServletContext servletContext = getServletConfig().getServletContext();
+			int count = 0;
+			SourceBean sourceBean = new SourceBean();
+			SourceDao sourceDao = new SourceDao();
+			try {
+				sourceBean = sourceDao.singleinfo(sid);
+				count = sourceBean.getViewcount()+1;
+				boolean flag = false;
+				flag = sourceDao.updateview(sid, count);
+				if(flag) {
+					System.out.println(count);
+//					servletContext.setAttribute("viewcount", count);
+					sourceBean.setViewcount(count);
+				}else {
+					System.out.println("wrong");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			session.setAttribute("Singleinfo", sourceBean);
+			session.setAttribute("Sourceid", sid);
+//			System.out.println(sourceBean.getSid());
+			response.sendRedirect("SelectcomServlet");	
+		}
 	}
 
 	/**

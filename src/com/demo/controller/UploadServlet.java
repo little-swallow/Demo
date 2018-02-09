@@ -1,9 +1,7 @@
 package com.demo.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -20,10 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.AbstractDocument.BranchElement;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadBase;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -127,13 +123,13 @@ public class UploadServlet extends HttpServlet {
 			}
             if(flag) {
 //            	out.write("上传成功！");
-            	response.sendRedirect("../../../view/main.jsp");
+            	response.sendRedirect("../../../view/uploadfile.jsp?fileup=yes");
             }else {
             	out.write("上传数据库失败！");
 			}  
         }else {
 //        	out.write("上传失败！");
-        	response.sendRedirect("../../../view/uploadfile.jsp");
+        	response.sendRedirect("../../../view/uploadfile.jsp?fileup=no");
         }
     }  
     private boolean processUploadField(FileItem item) {  

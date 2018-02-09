@@ -13,7 +13,6 @@
 <script type="text/javascript" src="../js-import/bootstrap.js"></script>
 </head>
 <body class="mainbody">
- 	<% session.setAttribute("Msg","");  %>
 	<nav class="navbar navbar-fixed-top" style="height:61px;background-color: #222">
 		<div class="container-fluid">
 			<div id="navbar" class="navbar-collapse collapse" style="display: block!important;">
