@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.demo.bean.CommentBean;
 import com.demo.dao.CommentDao;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 /**
  * Servlet implementation class SelectcomServlet

@@ -30,7 +30,7 @@
 		<h3>欢迎登录</h3>
 		<form action="../com/demo/controller/LoginServlet" method="post" >
 			<div class="input_div">
-				<input name="logname" id="logname" class="text" onfocus=" if(this.value=='输入用户名登录') this.value=''" onblur="if(this.value=='') this.value='输入用户名登录'" value="输入用户名登录" style="color: #FFFFFF !important" type="text" />
+				<input name="logname" id="logname" class="text" onfocus=" if(this.value=='输入用户名登录') this.value=''" onblur="if(this.value=='') this.value='输入用户名登录'" value="输入用户名登录" style="color: #FFFFFF !important" type="text" required="required"/>
 			</div>
 			<div class="input_div">
 				<label class="l-login login_password" style="color: rgb(255, 255, 255);display: block;">输入密码</label>

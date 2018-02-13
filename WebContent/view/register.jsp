@@ -31,19 +31,19 @@
 		<form action="../com/demo/controller/RegisterServlet" method="post" >
 			<label>用户名：</label>
 			<div class="input_div">
-				<input name="rname" id="rname" class="text" style="color: #FFFFFF !important" type="text">
+				<input name="rname" id="rname" class="text" style="color: #FFFFFF !important" type="text" required="required">
 			</div>
 			<label>密码：</label>
 			<div class="input_div">
-				<input name="rpwd" id="rpwd" class="text" style="color: #FFFFFF !important" type="password">
+				<input name="rpwd" id="rpwd" class="text" style="color: #FFFFFF !important" type="password" required="required">
 			</div>
 			<label>邮箱地址：</label>
 			<div class="input_div">
-				<input name="remail" id="remail" class="text" style="color: #FFFFFF !important" type="text">
+				<input name="remail" id="remail" class="text" style="color: #FFFFFF !important" type="text" required="required">
 			</div>
 			<label>联系方式：</label>
 			<div class="input_div">
-				<input name="rphone" id="rphone" class="text" style="color: #FFFFFF !important" type="text">
+				<input name="rphone" id="rphone" class="text" style="color: #FFFFFF !important" type="text" required="required">
 			</div>
 			<div style="margin-bottom: 20px">
 				<input type="submit" value="注册" class="act-but submit"style="color: #FFFFFF;text-decoration: none;outline: none;"/>

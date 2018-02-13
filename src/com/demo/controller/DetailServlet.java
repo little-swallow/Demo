@@ -38,7 +38,6 @@ public class DetailServlet extends HttpServlet {
 			System.out.println("Ã»µÇÂ¼");
 			response.sendRedirect("../../../view/home.jsp?login=no");
 		}else {
-			System.out.println(cid);
 			String fileid = request.getParameter("fileid");
 			int sid = Integer.parseInt(fileid);
 //			ServletContext servletContext = getServletConfig().getServletContext();

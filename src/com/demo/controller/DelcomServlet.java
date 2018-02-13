@@ -1,6 +1,8 @@
 package com.demo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-import com.demo.bean.UserBean;
-import com.demo.dao.UserDao;
+import com.demo.bean.CommentBean;
+import com.demo.dao.CommentDao;
 
 /**
- * Servlet implementation class SelfinfoServlet
+ * Servlet implementation class DelcomServlet
  */
-@WebServlet("/SelfinfoServlet")
-public class SelfinfoServlet extends HttpServlet {
+@WebServlet("/DelcomServlet")
+public class DelcomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelfinfoServlet() {
+    public DelcomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +33,28 @@ public class SelfinfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		String cid = (String)session.getAttribute("Suserid");
-		if(cid == null) { 
-			System.out.println("Ã»µÇÂ¼");
-			response.sendRedirect("../../../view/home.jsp?login=no");
-		}else {
-			int id =  (int)session.getAttribute("Userid");
-			UserDao userDao = new UserDao();
-			UserBean user =new UserBean();
+		int uid = (int)session.getAttribute("Userid");
+		int sid = (int)session.getAttribute("Sourceid");
+		CommentDao commentDao = new CommentDao();
+		ArrayList<CommentBean> commentBeans = new ArrayList<CommentBean>();
+		boolean flag = false;
+		try {
+			flag = commentDao.deletecom(uid, sid);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(flag) {
 			try {
-				user = userDao.selectuserinfo(id);
+				commentBeans = commentDao.selectbysid(sid);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			response.sendRedirect("../../../view/selfinfo.jsp");	
-			session.setAttribute("Userinfo", user);	
-		}	
+			session.setAttribute("commentinfo", commentBeans); 
+			response.sendRedirect("../../../view/sourcecontent.jsp");
+		}
 	}
 
 	/**

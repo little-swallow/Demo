@@ -60,7 +60,9 @@
   				</div>
 			</form>
 			<ul class="commentlist">
-				<c:forEach items="${commentinfo}" var="item"> 
+				<c:forEach items="${commentinfo}" var="item">
+					<c:set var="uid" value="${item.uid}"/> 
+					<c:set var="logid" value="${sessionScope.Userid}"/>
 					<hr style="border-top: 2px solid #eee;width: 940px;"></hr>
 					<li>
 						<div class="row">
@@ -68,6 +70,11 @@
 							<div class="col-md-2">${item.sctime}</div>
 						</div>
 						<div style="margin-top: 20px;">${item.scont}</div>
+						<c:if test="${uid eq logid }">
+							<div style="float:right;margin-bottom:10px" id="${item.uid}" >
+								<a href="../com/demo/controller/DelcomServlet">删除</a>
+							</div>
+						</c:if>
 					</li>
 				</c:forEach>
 			</ul>

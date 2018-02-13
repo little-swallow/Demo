@@ -35,17 +35,24 @@ public class MysourceServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		int id =  (int)session.getAttribute("Userid");
-		SourceDao sourceDao = new SourceDao();
-		ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
-		try {
-			sourceinfo = sourceDao.selectbyuid(id);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String cid = (String)session.getAttribute("Suserid");
+		if(cid == null) { 
+			System.out.println("Ã»µÇÂ¼");
+			response.sendRedirect("../../../view/home.jsp?login=no");
+		}else {
+			int id =  (int)session.getAttribute("Userid");
+			SourceDao sourceDao = new SourceDao();
+			ArrayList<SourceBean> sourceinfo = new ArrayList<SourceBean>();
+			try {
+				sourceinfo = sourceDao.selectbyuid(id);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			session.setAttribute("info", sourceinfo); 
+			response.sendRedirect("../../../view/mysource.jsp"); 
+			
 		}
-		session.setAttribute("info", sourceinfo); 
-		response.sendRedirect("../../../view/mysource.jsp"); 
 	}
 
 	/**

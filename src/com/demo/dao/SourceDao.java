@@ -188,4 +188,33 @@ public class SourceDao {
 		}
 		return false;
 	}
+	
+	public ArrayList<SourceBean> searchsource(String search) throws Exception{
+		ArrayList<SourceBean> Sourceinfo = new ArrayList<SourceBean>();
+		Connection connection  = dBconnection.getConn();
+		PreparedStatement prest =  null;
+		ResultSet rs = null;
+		String sql = "select Sid,Sname,Suname,Sdiscribe,Ssort,Uname,"
+				+ "Sview,Sdownload,Stime from source_table,user_table "
+				+ "where source_table.Uid = user_table.Uid and "
+				+ "(Ssort like ? or Sdiscribe like ?) order by Sview desc";
+		prest = dBconnection.getprep(connection, sql);
+		prest.setString(1, "%"+search+"%");
+		prest.setString(2, "%"+search+"%");
+		rs = prest.executeQuery();
+		while (rs.next()) {
+			SourceBean sourceBean = new SourceBean();
+			sourceBean.setSid(rs.getInt("Sid"));
+			sourceBean.setSname(rs.getString("Sname"));
+			sourceBean.setSuname(rs.getString("Suname"));
+			sourceBean.setDescribe(rs.getString("Sdiscribe"));
+			sourceBean.setSourcesort(rs.getString("Ssort"));
+			sourceBean.setUpname(rs.getString("Uname"));
+			sourceBean.setViewcount(rs.getInt("Sview"));
+			sourceBean.setDlcount(rs.getInt("Sdownload"));
+			sourceBean.setSdate(rs.getString("Stime"));
+			Sourceinfo.add(sourceBean);
+		}
+		return Sourceinfo;
+	}
 }

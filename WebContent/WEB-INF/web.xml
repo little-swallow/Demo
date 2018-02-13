@@ -113,4 +113,28 @@
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/com/demo/controller/DownloadServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>CupsourceServlet</servlet-name>
+    <servlet-class>com.demo.controller.CupsourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CupsourceServlet</servlet-name>
+    <url-pattern>/com/demo/controller/CupsourceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.demo.controller.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SearchServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>DelcomServlet</servlet-name>
+    <servlet-class>com.demo.controller.DelcomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelcomServlet</servlet-name>
+    <url-pattern>/com/demo/controller/DelcomServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -30,7 +30,7 @@ public class CommentDao {
 		Connection connection  = dBconnection.getConn();
 		PreparedStatement prest =  null;
 		ResultSet rs = null;
-		String sql = "select Cid,Ctext,Ctime,Uname from source_table,user_table,com_table "
+		String sql = "select Cid,Ctext,Ctime,com_table.Uid,Uname from source_table,user_table,com_table "
 				+ "where com_table.Uid = user_table.Uid and com_table.Sid = source_table.Sid and "
 				+ "source_table.Sid=?";
 		prest = dBconnection.getprep(connection, sql);
@@ -41,9 +41,25 @@ public class CommentDao {
 			commentBean.setScid(rs.getInt("Cid"));
 			commentBean.setScont(rs.getString("Ctext"));
 			commentBean.setSctime(rs.getString("Ctime"));
+			commentBean.setUid(rs.getInt("Uid"));
 			commentBean.setScname(rs.getString("Uname"));
 			commentinfo.add(commentBean);
 		}
 		return commentinfo;
 	} 
+	
+	public boolean deletecom(int uid,int sid) throws Exception{
+		Connection conn = dBconnection.getConn();
+		String sql = "delete from com_table where Uid = ? and Sid = ? ";
+		PreparedStatement prest = dBconnection.getprep(conn, sql);	
+		prest.setInt(1, uid);
+		prest.setInt(2, sid);
+		int i = prest.executeUpdate();
+		if(i>0){
+			return true;
+		}
+		return false;
+	}
 }
+
+
