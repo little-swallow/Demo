@@ -129,12 +129,69 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/com/demo/controller/SearchServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>DelcomServlet</servlet-name>
     <servlet-class>com.demo.controller.DelcomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DelcomServlet</servlet-name>
     <url-pattern>/com/demo/controller/DelcomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SeluserServlet</servlet-name>
+    <servlet-class>com.demo.controller.SeluserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SeluserServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SeluserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelsouServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelsouServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelsouServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelsouServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelcomServlet</servlet-name>
+    <servlet-class>com.demo.controller.SelcomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelcomServlet</servlet-name>
+    <url-pattern>/com/demo/controller/SelcomServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MuserServlet</servlet-name>
+    <servlet-class>com.demo.controller.MuserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MuserServlet</servlet-name>
+    <url-pattern>/com/demo/controller/MuserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MsourceServlet</servlet-name>
+    <servlet-class>com.demo.controller.MsourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MsourceServlet</servlet-name>
+    <url-pattern>/com/demo/controller/MsourceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>McomServlet</servlet-name>
+    <servlet-class>com.demo.controller.McomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>McomServlet</servlet-name>
+    <url-pattern>/com/demo/controller/McomServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChecknameServlet</servlet-name>
+    <servlet-class>com.demo.controller.ChecknameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChecknameServlet</servlet-name>
+    <url-pattern>/ChecknameServlet</url-pattern>
   </servlet-mapping>
 </web-app>

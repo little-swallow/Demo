@@ -15,14 +15,14 @@ import com.demo.dao.SourceDao;
 /**
  * Servlet implementation class DetailServlet
  */
-@WebServlet("/DetailServlet")
-public class DetailServlet extends HttpServlet {
+@WebServlet("/DetailsServlet")
+public class DetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailServlet() {
+    public DetailsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,9 @@ public class DetailServlet extends HttpServlet {
 			response.sendRedirect("../../../view/home.jsp?login=no");
 		}else {
 			String fileid = request.getParameter("fileid");
+			System.out.println(fileid);
 			int sid = Integer.parseInt(fileid);
+			System.out.println(sid);
 			int count = 0;
 			SourceBean sourceBean = new SourceBean();
 			SourceDao sourceDao = new SourceDao();
@@ -60,7 +62,8 @@ public class DetailServlet extends HttpServlet {
 			}
 			session.setAttribute("Singleinfo", sourceBean);
 			session.setAttribute("Sourceid", sid);
-			response.sendRedirect("SelectcomServlet");	
+		//	response.sendRedirect("SelectcomServlet");	
+			response.sendRedirect("../../../view/home.jsp");
 		}
 	}
 

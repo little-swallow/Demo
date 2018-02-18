@@ -2,10 +2,11 @@ package com.demo.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.sql.Connection;
+
 import com.demo.bean.UserBean;
 import com.demo.dao.DBconnection;
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class UserDao {
 	DBconnection dBconnection = new DBconnection();
@@ -86,4 +87,37 @@ public class UserDao {
 		}
 		return false;	
 	}
+	
+	public ArrayList<UserBean> selectalluser() throws Exception{
+		ArrayList<UserBean> userBeans = new ArrayList<UserBean>();
+		Connection connection  = dBconnection.getConn();
+		PreparedStatement prest =  null;
+		ResultSet rs = null;
+		String sql = "select * from user_table";
+		prest = dBconnection.getprep(connection, sql);
+		rs = prest.executeQuery();
+		while (rs.next()) {
+			UserBean userBean = new UserBean();
+			userBean.setCid(rs.getInt("Uid"));
+			userBean.setName(rs.getString("Uname"));
+			userBean.setPwd(rs.getString("Upass"));
+			userBean.setEmail(rs.getString("Uemail"));
+			userBean.setPhone(rs.getString("Uphone"));
+			userBeans.add(userBean);
+		}
+		return userBeans;
+	} 
+	
+	public boolean deleteuser(int uid) throws Exception{
+		Connection conn = dBconnection.getConn();
+		String sql = "delete from user_table where Uid = ? ";
+		PreparedStatement prest = dBconnection.getprep(conn, sql);	
+		prest.setInt(1, uid);
+		int i = prest.executeUpdate();
+		if(i>0){
+			return true;
+		}
+		return false;
+	}
+	
 }

@@ -32,6 +32,7 @@
 			<label>用户名：</label>
 			<div class="input_div">
 				<input name="rname" id="rname" class="text" style="color: #FFFFFF !important" type="text" required="required">
+				<span id='errorMsg'>测试</span>
 			</div>
 			<label>密码：</label>
 			<div class="input_div">
@@ -61,6 +62,32 @@
 			$("#tooltip1").text("注册失败! 请重新注册");
 			$("#tool1").addClass("alert-danger");
 			$("#tool1").css('display','block');
+		}
+		$("#rname").focusout(function() {
+			var name = $("#rname").val();
+			if(name != null && name != ''){
+			  	checkName(name);
+			}
+		});
+		function checkName(name){
+			$.ajax({
+				url:"ChecknameServlet",
+				type:"post",
+				contentType:"application/json",
+				data:{name:name},
+				success:function(result){
+					if(result == "true"){
+						alert("test sucess");
+						
+					}else{
+						alert("test faile")
+						
+					}
+				},
+				error:function(){
+					console.log("检查用户是否存在发生错误");
+				}
+			});
 		}
 	})
 </script>

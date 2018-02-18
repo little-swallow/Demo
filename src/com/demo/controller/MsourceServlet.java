@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.demo.dao.SourceDao;
 
 /**
- * Servlet implementation class DeleteServlet
+ * Servlet implementation class MsourceServlet
  */
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/MsourceServlet")
+public class MsourceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteServlet() {
+    public MsourceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +38,7 @@ public class DeleteServlet extends HttpServlet {
         //得到存放的子目录  
         String childDirecotry = makeChildDirectory(storeDirectory, filename); 
         String storeDirectoryPath = storeDirectory+File.separator+childDirecotry+File.separator+filename;
+        System.out.println(storeDirectoryPath);
         File deletefile = new File(storeDirectoryPath); 
         boolean flag = false;
         if(deletefile.exists()) {
@@ -52,8 +53,8 @@ public class DeleteServlet extends HttpServlet {
 					e.printStackTrace();
 				}
         		if(tag) {
-            		System.out.println("成功");
-            		response.sendRedirect("MysourceServlet");
+        			System.out.println("成功");
+            		response.sendRedirect("SelsouServlet");
         		}else {
             		System.out.println("数据库操作失败");
         		}

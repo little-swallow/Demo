@@ -217,4 +217,30 @@ public class SourceDao {
 		}
 		return Sourceinfo;
 	}
+	
+	public ArrayList<SourceBean> selectallsource() throws Exception{
+		ArrayList<SourceBean> Sourceinfo = new ArrayList<SourceBean>();
+		Connection connection  = dBconnection.getConn();
+		PreparedStatement prest =  null;
+		ResultSet rs = null;
+		String sql = "select Sid,Sname,Suname,Sdiscribe,Ssort,Uname,"
+				+ "Sview,Sdownload,Stime from source_table,user_table "
+				+ "where source_table.Uid = user_table.Uid";
+		prest = dBconnection.getprep(connection, sql);
+		rs = prest.executeQuery();
+		while (rs.next()) {
+			SourceBean sourceBean = new SourceBean();
+			sourceBean.setSid(rs.getInt("Sid"));
+			sourceBean.setSname(rs.getString("Sname"));
+			sourceBean.setSuname(rs.getString("Suname"));
+			sourceBean.setDescribe(rs.getString("Sdiscribe"));
+			sourceBean.setSourcesort(rs.getString("Ssort"));
+			sourceBean.setUpname(rs.getString("Uname"));
+			sourceBean.setViewcount(rs.getInt("Sview"));
+			sourceBean.setDlcount(rs.getInt("Sdownload"));
+			sourceBean.setSdate(rs.getString("Stime"));
+			Sourceinfo.add(sourceBean);
+		}
+		return Sourceinfo;
+	} 
 }

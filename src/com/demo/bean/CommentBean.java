@@ -6,6 +6,13 @@ public class CommentBean {
 	private String sctime;
 	private String scname;
 	private int uid;
+	private String sname;
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
 	public int getUid() {
 		return uid;
 	}
